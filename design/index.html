@@ -366,7 +366,7 @@ function winReady(){
 /*마우스 휠*/
 $(window).on('mousewheel DomMouseScroll', function(e,delta){
     e.preventDefault()
-    ani_img = $("html").is(":animated")
+    ani_img = $("html").is(":animated") // :animated 움직이는 요소
 
     if(delta<0 && num<6 &&!ani_img){
         num=num+1
