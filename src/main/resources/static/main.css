@@ -82,12 +82,22 @@ header ul li span {
     margin-right: 30px;
     display: flex;
     color: white;
+    transition: 0.5s;
 }
 
 .lastNav a {
     margin-right: 20px;
     display: flex;
     color: white;
+    transition: 0.5s;
+}
+
+.firstNav a:hover {
+    color: #ea2328;
+}
+
+.lastNav a:hover {
+    color: #ea2328;
 }
 
 /* 모든 섹션 공통 */
@@ -160,7 +170,7 @@ header ul li span {
     margin-bottom: 25px;
     font-size: 14px;
     letter-spacing: 0.25px;
-    text-shadow: 1px 1px 4px black;
+    text-shadow: 1px 1px 5px black;
 }
 
 .main_img ul li a {
@@ -180,6 +190,7 @@ header ul li span {
 }
 
 .main_nav {
+    max-width: 100%;
     width: 100%;
     height: 50px;
 }
@@ -370,12 +381,42 @@ header ul li span {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
 }
 
 .sec3_vod {
     width: 100%;
     height: 80%;
+    transform: scale(1.1);
+    cursor: pointer;
 }
+
+.sec3_item_black {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: black;
+    opacity: 0.3;
+}
+
+.sec3_item_play {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+.sec3_item_play img {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+}
+
 
 .sec3_title {
     margin-top: 20px;
@@ -490,7 +531,7 @@ header ul li span {
     height: 100%;
 }
 
-.sec4_boxs {
+.sec4_box {
     max-width: 1250px;
     width: 100%;
     height: 400px;
@@ -503,7 +544,8 @@ article {
     height: 100%;
     overflow: hidden;
     background-color: black;
-    border-right: 1px solid #000000;
+    border-right: 2px solid #000000;
+    box-sizing: border-box;
 }
 
 article:last-child {
@@ -574,11 +616,378 @@ article:last-child {
     margin-top: 80px;
     width: 100%;
     height: 100%;
-    border: 1px solid red;
 }
 
+.sec5_black_bg {
+    width: 100%;
+    height: 500px;
+    background-color: black;
+    position: absolute;
+    top: 0;
+}
+
+.sec5_box {
+    max-width: 1250px;
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sec5_title {
+    max-width: 525px;
+    width: 100%;
+    height: 100%;
+}
+
+.sec5_title ul {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+}
+
+.sec5_title ul li:nth-child(1) {
+    margin-bottom: 15px;
+}
+
+.sec5_title ul img {
+    width: 100%;
+}
+
+.sec5_title ul h1 {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    line-height: 28px;
+}
+
+.sec5_title ul li:nth-child(2) {
+    border-bottom: 1px solid #c4a76f;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.sec5_title ul h3 {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+}
+
+.sec5_title ul p {
+    font-size: 14px;
+    letter-spacing: 0.25px;
+    line-height: 22px;
+}
+
+.sec5_title ul li:nth-child(5) {
+    margin-top: 18px;
+}
+
+.sec5_title ul li a {
+    color: white;
+    line-height: 35px;
+    padding: 0 30px;
+    background-color: #ea2328;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    display: inline-block;
+}
+
+.sec5_title ul li a:hover {
+    background-color: #b01527;
+    color: #cbcbcb;
+    transition: 0.5s;
+}
+
+.sec5_right_bg {
+    max-width: 725px;
+    width: 100%;
+    height: 100%;
+    background-image: url("../static/imgs/movie_img2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 120px 100%);
+    /*animation: sec5_scale infinite 5s ;*/
+}
+
+/*@keyframes sec5_scale{*/
+/*    0%{transform: scale(1);}*/
+/*    50%{transform: scale(1.3);}*/
+/*    100%{transform: scale(1);}*/
+/*}*/
+
+.sec5_itemBox {
+    max-width: 1250px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: white;
+    z-index: 2;
+    top: -30px;
+    padding: 30px 30px 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sec5_item {
+    width: 100%;
+    height: 100%;
+    margin-right: 20px;
+}
+
+.sec5_item:last-child {
+   margin-right: 0px;
+}
+
+.sec5_item a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sec5_item a:hover h3 {
+    color: #ea2328;
+}
+
+.sec5_item img {
+    max-width: 250px;
+    width: 100%;
+    box-shadow: 1px 1px 5px black;
+    transition: 0.5s;
+}
+
+.sec5_item h3 {
+    font-size: 14px;
+    margin-top: 5px;
+    transition: 0.5s;
+}
+
+@media (max-width: 1250px) {
+    .sec5_item:last-child {
+        margin-right: 60px;
+    }
+}
+
+@media (max-width: 830px) {
+    .sec5_item h3 {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 650px) {
+    .main_img {
+        display: flex;
+        justify-content: center;
+    }
+
+    .main_img ul {
+        width: 450px;
+        padding: 0px;
+        position: relative;
+    }
+
+    .main_img ul li:nth-child(2) {
+        text-shadow: 1px 1px 2px black;
+    }
+
+    .main_nav {
+        display: flex;
+        justify-content: center;
+    }
+
+    .sec_title h1 {
+        font-size: 18px;
+    }
+
+    .sec_title span {
+        width: 60px;
+        top: 12px;
+        left: -7px;
+    }
+
+    .sec_title h1,span {
+        margin-left: 20px;
+    }
+
+    .sec2_itemBox {
+        max-width: 1250px;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .sec2_item {
+        margin-bottom: 30px;
+    }
+
+    .sec2_item1 {
+        width: 90%;
+    }
+
+    .sec2_item2 {
+        width: 90%;
+    }
+
+    .sec2_item3 {
+        width: 90%;
+    }
+
+    .sec2_item4 {
+        width: 90%;
+    }
+
+    .sec2_item5 {
+        width: 90%;
+    }
+
+    .sec2_item a ul li:nth-child(1) {
+        font-size: 14px;
+    }
+
+    .sec2_item a ul li:nth-child(2) {
+        font-size: 12px;
+    }
+
+    .section3_trailer {
+        width: 100%;
+        height: 750px;
+        margin-top: 80px;
+        background-color: black;
+    }
+
+    .sec3_box {
+        max-width: 1250px;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .sec3_item {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .sec3_vod {
+        width: 90%;
+    }
+
+    .sec3_title {
+        margin-top: -5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sec3_title h1 {
+        font-size: 16px;
+    }
+
+    .sec3_title p {
+        font-size: 12px;
+    }
+
+    .sec3_items2 {
+        max-width: 650px;
+        width: 80%;
+        height: 450px;
+        overflow: auto;
+        margin-left: 0px;
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
+
+    .sec3_board {
+        width: 100%;
+        height: 100px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 25px;
+    }
+
+    .sec4_box {
+        height: 100%;
+        flex-direction: column;
+    }
+
+    article {
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        background-color: black;
+        border-right: 2px solid #000000;
+        box-sizing: border-box;
+    }
+
+    .sec5_itemBox {
+        max-width: 1250px;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        top: 0px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .sec5_item {
+        width: 45%;
+        height: 100%;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+    }
 
 
+}
 
+/* 푸터 */
+footer {
+    width: 100%;
+    height: 50px;
+    margin-top: 180px;
+    background-color: black;
+}
 
+footer div {
+    max-width: 1250px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
+footer p {
+    color: white;
+}

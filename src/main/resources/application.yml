@@ -20,3 +20,6 @@ spring:
       ddl-auto: create
       # create : 실행할 때 마다 전체 재시작
       # update : 실행할 때 table drop 없이 실행.
+
+
+
