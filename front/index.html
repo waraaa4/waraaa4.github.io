@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/main.css">
+    <link rel="stylesheet" href="./static/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="./static/bootstrap/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8ca221a456.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrap">
+    <!-- 네비게이션 -->
+    <header class="header">
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./static/imgs/logo.png" alt="">
+                </a>
+            </div>
+            <div class="firstNav">
+                <ul>
+                    <li>
+                        <a href="character.html">characters</a>
+                    </li>
+                    <li>
+                        <a href="movie.html">movies</a>
+                    </li>
+                    <li>
+                        <a href="community.html">community</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="lastNav">
+                <ul>
+                    <li th:if="${session.loginId} == null">
+                        <a href="member/save.html">sign in</a>
+                    </li>
+                    <li>
+                        <span>|</span>
+                    </li>
+                    <li th:if="${session.loginId} == null">
+                        <a href="member/login.html">join</a>
+                    </li>
+                    <!-- <li th:if="${session.loginId} != null">
+                        <a  href="/member/logout">로그아웃</a>
+                    </li> -->
+<!--                    <li>-->
+<!--                        <a href="#">-->
+<!--                            <i class="fa-solid fa-magnifying-glass"></i>-->
+<!--                        </a>-->
+<!--                    </li>-->
+                </ul>
+            </div>
+            <div class="ham">
+                <i class="fa-solid fa-align-justify fa-2x"></i>
+            </div>
+            <div class="ham_close">
+                <i class="fa-solid fa-xmark fa-3x"></i>
+            </div>
+        </nav>
+        <div class="ham_pop">
+            <ul>
+                <li><a href="#">characters</a></li>
+                <li><a href="#">movies</a></li>
+                <li><a href="#">community</a></li>
+                <li><a href="#">sign in</a></li>
+                <li><a href="#">join</a></li>
+                <li><input type="text" class="form-control mb-2" placeholder="Search"></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 섹션1 메인 이미지 -->
+    <section id="demo" class="section1_main carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="main_box main_box1 carousel-item active">
+                <div class="main_img main_img1">
+                    <ul>
+                        <li><img src="./static/imgs/main1_1.png" alt=""></li>
+                        <li>인피니티 워 이후 절반만 살아남은 지구 마지막 희망이 된 어벤져스 먼저 떠난 그들을 위해 모든 것을 걸었다.<br>
+                            위대한 어벤져스 운명을 바꿀 최후의 전쟁이 펼쳐진다!
+                        </li>
+                        <li><a href="#">GET IT NOW</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main_box main_box2 carousel-item">
+                <div class="main_img main_img2">
+                    <ul>
+                        <li><img src="./static/imgs/main2_1.png" alt=""></li>
+                        <li>‘미스테리오’의 계략으로 세상에 정체가 탄로난 스파이더맨 ‘피터 파커’는 하루 아침에 평범한 일상을 잃게 된다.<br>
+                            문제를 해결하기 위해 ‘닥터 스트레인지’를 찾아가 도움을 청하지만 뜻하지 않게 멀티버스가 열리면서 각기 다른 차원의 불청객들이 나타난다.
+                        </li>
+                        <li><a href="#">GET IT NOW</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main_box main_box3 carousel-item">
+                <div class="main_img main_img3">
+                    <ul>
+                        <li><img src="./static/imgs/main3_1.png" alt=""></li>
+                        <li>죽음의 여신 ‘헬라’가 아스가르드를 침략하고, 세상은 모든 것의 종말 ‘라그나로크’의 위기에 처한다.<br>
+                            헬라에게 자신의 망치마저 파괴당한 토르는 어벤져스 동료인 헐크와도 피할 수 없는 대결을벌이면서 절체절명의 위기에 빠지게 되는데…
+                        </li>
+                        <li><a href="#">GET IT NOW</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main_nav carousel-indicators">
+            <div>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 섹션2 최신정보 -->
+    <section class="section2_news">
+        <div class="sec_title">
+            <h1>최신정보</h1>
+            <span></span>
+        </div>
+        <div class="sec2_itemBox sec2_itemBox1">
+            <div class="sec2_item sec2_item1">
+                <a href="#">
+                    <img src="./static/imgs/news1.png" alt="">
+                    <ul>
+                        <li>가디언즈 갤럭시 VOL.3</li>
+                        <li>가디언즈 오브 갤럭시 실사영화 시리즈의 마지막 영화가 6년만에 개봉을 한다.</li>
+                    </ul>
+                </a>
+            </div>
+            <div class="sec2_item sec2_item2">
+                <a href="#">
+                    <img src="./static/imgs/news2.png" alt="">
+                    <ul>
+                        <li>팔콘과 윈터 솔져</li>
+                        <li>2세대 캡틴아메리카의 이야기가 디즈니+에서 방영한다.</li>
+                    </ul>
+                </a>
+            </div>
+            <div class="sec2_item sec2_item3">
+                <a href="#">
+                    <img src="./static/imgs/news3.png" alt="">
+                    <ul>
+                        <li>닥터 스트레인지: 대혼돈의 멀티버스</li>
+                        <li>닥터 스트레인지 2는 완다비전 이후 2년 후를 배경으로 진행될 것이라고 한다.</li>
+                    </ul>
+                </a>
+            </div>
+        </div>
+        <div class="sec2_itemBox sec2_itemBox2">
+            <div class="sec2_item sec2_item4">
+                <a href="#">
+                    <img src="./static/imgs/news4.png" alt="">
+                    <ul>
+                        <li>스파이더맨: 노 웨이 홈</li>
+                        <li>스파이더맨 블루레이 에디션이 2022년 4월 30일경에 출시 될 예정이다.</li>
+                    </ul>
+                </a>
+            </div>
+            <div class="sec2_item sec2_item5">
+                <a href="#">
+                    <img src="./static/imgs/news5.png" alt="">
+                    <ul>
+                        <li>블랙팬서: 와칸다 포에버 제작 발표</li>
+                        <li>기존의 캐릭터들과 와칸다를 좀 더 탐구하는 쪽으로 이야기를 꾸릴 것이라고 한다.
+                            영화 개봉은 2022년 7월 예정이다.
+                        </li>
+                    </ul>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 섹션3 유튜브 -->
+    <section class="section3_trailer">
+        <div class="sec3_box">
+            <div class="sec3_items1">
+                <div class="sec3_item sec3_item1">
+                    <!--                    <iframe class="sec3_vod sec3_vod1"-->
+                    <!--                            src="https://www.youtube-nocookie.com/embed/2VJXoVeGgzc?controls=0"-->
+                    <!--                            title="YouTube video player" frameborder="0"-->
+                    <!--                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"-->
+                    <!--                            allowfullscreen>-->
+                    <!--                    </iframe>-->
+                    <video class="sec3_vod sec3_vod1 sec3_play" id="c0" preload="auto" muted>
+                        <source src="./static/vod/sec3_vod1.mp4" type="video/mp4">
+                    </video>
+                    <div class="sec3_item_play">
+                        <img src="./static/imgs/outline_play_circle_white_48dp.png" alt="">
+                    </div>
+                    <div class="sec3_item_black"></div>
+                    <div class="sec3_title sec3_title1">
+                        <h1>캡틴 아메리카: 윈터 솔져</h1>
+                        <p>수수께끼의 존재 윈터 솔져와 캡틴의 대결</p>
+                    </div>
+                </div>
+                <div class="sec3_item sec3_item2">
+                    <!--                    <iframe class="sec3_vod sec3_vod2"-->
+                    <!--                            src="https://www.youtube-nocookie.com/embed/8mMBtYNMeC0?controls=0"-->
+                    <!--                            title="YouTube video player"-->
+                    <!--                            frameborder="0"-->
+                    <!--                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"-->
+                    <!--                            allowfullscreen>-->
+                    <!--                    </iframe>-->
+                    <video class="sec3_vod sec3_vod2" id="c1" preload="auto" muted>
+                        <source src="./static/vod/sec3_vod2.mp4" type="video/mp4">
+                    </video>
+                    <div class="sec3_item_play">
+                        <img src="./static/imgs/outline_play_circle_white_48dp.png" alt="">
+                    </div>
+                    <div class="sec3_item_black"></div>
+                    <div class="sec3_title">
+                        <h1>어벤져스: 엔드게임</h1>
+                        <p>캡틴아메리카&토르&아이어맨 vs 타노스</p>
+                    </div>
+                </div>
+                <div class="sec3_item sec3_item3">
+                    <!--                    <iframe class="sec3_vod sec3_vod3"-->
+                    <!--                            src="https://www.youtube-nocookie.com/embed/pk-tzsXqFDA?controls=0"-->
+                    <!--                            title="YouTube video player"-->
+                    <!--                            frameborder="0"-->
+                    <!--                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"-->
+                    <!--                            allowfullscreen>-->
+                    <!--                    </iframe>-->
+                    <video class="sec3_vod sec3_vod3" id="c2" preload="auto" muted>
+                        <source src="./static/vod/sec3_vod3.mp4" type="video/mp4">
+                    </video>
+                    <div class="sec3_item_play">
+                        <img src="./static/imgs/outline_play_circle_white_48dp.png" alt="">
+                    </div>
+                    <div class="sec3_item_black"></div>
+                    <div class="sec3_title">
+                        <h1>어벤져스: 인피니티 워</h1>
+                        <p>드디어 만난 타노스, 아이언맨과 대결</p>
+                    </div>
+                </div>
+                <div class="sec3_item sec3_item4">
+                    <!--                    <iframe class="sec3_vod sec3_vod4"-->
+                    <!--                            src="https://www.youtube-nocookie.com/embed/hrfJ4jnqdOw?controls=0"-->
+                    <!--                            title="YouTube video player"-->
+                    <!--                            frameborder="0"-->
+                    <!--                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"-->
+                    <!--                            allowfullscreen>-->
+                    <!--                    </iframe>-->
+                    <video class="sec3_vod sec3_vod4" id="c3" preload="auto" muted>
+                        <source src="./static/vod/sec3_vod4.mp4" type="video/mp4">
+                    </video>
+                    <div class="sec3_item_play">
+                        <img src="./static/imgs/outline_play_circle_white_48dp.png" alt="">
+                    </div>
+                    <div class="sec3_item_black"></div>
+                    <div class="sec3_title">
+                        <h1>토르: 라그나로크</h1>
+                        <p>번개의 신으로 각성한 토르</p>
+                    </div>
+                </div>
+                <div class="sec3_item sec3_item5">
+                    <!--                    <iframe class="sec3_vod sec3_vod5"-->
+                    <!--                            src="https://www.youtube-nocookie.com/embed/5UGY3EkP6JU?controls=0"-->
+                    <!--                            title="YouTube video player"-->
+                    <!--                            frameborder="0"-->
+                    <!--                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"-->
+                    <!--                            allowfullscreen>-->
+                    <!--                    </iframe>-->
+                    <video class="sec3_vod sec3_vod5" id="c4" preload="auto" muted>
+                        <source src="./static/vod/sec3_vod5.mp4" type="video/mp4">
+                    </video>
+                    <div class="sec3_item_play">
+                        <img src="./static/imgs/outline_play_circle_white_48dp.png" alt="">
+                    </div>
+                    <div class="sec3_item_black"></div>
+                    <div class="sec3_title">
+                        <h1>어벤져스</h1>
+                        <p>헐크의 변신과 변신의 숨겨진 비밀</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sec3_items2 mCustomScrollbar" data-mcs-theme="#fff">
+                <div class="sec3_board sec3_board1">
+                    <div class="sec3_board_img sec3_board_img3"></div>
+                    <div class="sec3_board_title sec3_board_title1">
+                        <p>수수께끼의 존재 윈터 솔져와 캡틴의 대결</p>
+                    </div>
+                </div>
+                <div class="sec3_board sec3_board2">
+                    <div class="sec3_board_img sec3_board_img1"></div>
+                    <div class="sec3_board_title sec3_board_title1">
+                        <p>캡틴아메리카&토르&아이어맨 vs 타노스</p>
+                    </div>
+                </div>
+                <div class="sec3_board sec3_board3">
+                    <div class="sec3_board_img sec3_board_img4"></div>
+                    <div class="sec3_board_title sec3_board_title1">
+                        <p>드디어 만난 타노스, 아이언맨과 대결</p></div>
+                </div>
+                <div class="sec3_board sec3_board4">
+                    <div class="sec3_board_img sec3_board_img2"></div>
+                    <div class="sec3_board_title sec3_board_title1">
+                        <p>번개의 신으로 각성한 토르</p>
+                    </div>
+                </div>
+                <div class="sec3_board sec3_board5">
+                    <div class="sec3_board_img sec3_board_img5"></div>
+                    <div class="sec3_board_title sec3_board_title1">
+                        <p>헐크의 변신과 변신의 숨겨진 비밀</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 섹션4 캐릭터 -->
+    <section class="section4_characters">
+        <div class="sec_title">
+            <h1>추천 히어로</h1>
+            <span></span>
+        </div>
+        <div class="sec4_box">
+            <article>
+                <div class="sec4_item_img">
+                    <img src="./static/imgs/ch1.png" alt="">
+                </div>
+                <a href="#" class="sec4_item_vod">
+                    <video loop preload="auto" id="v0" muted>
+                        <source src="./static/vod/vod1.mp4" type="video/mp4">
+                    </video>
+                    <div class="sec4_item_title">
+                        <h3>캡틴 아메리카</h3>
+                        <p>제2차 세계대전 당시 조국에 봉사하기 위해 초인 병사 계획
+                            “프로젝트 리버스”에 자원하여 특수 혈청을 맞고 모든 능력을 인간의 한계까지 끌어올린 초인이 되었다.
+                            특유의 캡틴 아메리카 코스튬과 비브라늄 방패를 들고 제2차 세계대전에 참전했다.</p>
+                    </div>
+                </a>
+            </article>
+            <article>
+                <div class="sec4_item_img">
+                    <img src="./static/imgs/ch2.png" alt="">
+                </div>
+                <a href="#" class="sec4_item_vod">
+                    <video loop preload="auto" id="v1" muted>
+                        <source src="./static/vod/vod2.mp4" type="video/mp4">
+                    </video>
+                    <div class="sec4_item_title">
+                        <h3>아이언맨</h3>
+                        <p>천재적인 두뇌와 재능으로 세계 최고의 군수산업체 '스타크 인더스트리'를 이끄는 CEO/엔지니어이자,
+                            타고난 매력으로 웬만한 할리우드 스타 부럽지 않은 화려한 삶을 살아가던 억만장자였으나,
+                            우연한 사건을 계기로 개심하고 또다른 삶을 살아간다. </p>
+                    </div>
+                </a>
+            </article>
+            <article>
+                <div class="sec4_item_img">
+                    <img src="./static/imgs/ch3.png" alt="">
+                </div>
+                <a href="#" class="sec4_item_vod">
+                    <video loop preload="auto" id="v2" muted>
+                        <source src="./static/vod/vod3.mp4" type="video/mp4">
+                    </video>
+                    <div class="sec4_item_title">
+                        <h3>토르</h3>
+                        <p>오딘은 토르에게 겸손과 책임감을 깨달을 수 있도록 지구에 추방했다.
+                            토르는 지구에서 힘을 잃고 인간이 됐고, 묠니르를 드는 것에도 실패하고 낙담한다.
+                            그는 인간들과 교제를 통해서 마음의 상처를 회복하고 그들을 구하기 위해서 영웅으로 거듭난다.</p>
+                    </div>
+                </a>
+            </article>
+            <article>
+                <div class="sec4_item_img">
+                    <img src="./static/imgs/ch4.png" alt="">
+                </div>
+                <a href="#" class="sec4_item_vod">
+                    <video loop preload="auto" id="v3" muted>
+                        <source src="./static/vod/vod4.mp4" type="video/mp4">
+                    </video>
+                    <div class="sec4_item_title">
+                        <h3>앤트맨</h3>
+                        <p>행크 핌이 찾아와 수트와 헬멧을 건네며 ‘앤트맨’이 되어 줄 것을 요청한다.
+                            어리둥절 하지만 일단 한번 해보기로 결심한 스캇 랭은 행크 핌의 딸인 호프의 도움을 받아 점차 히어로의 면모를 갖추어가고,
+                            그의 스승이자 멘토인 행크 핌 박사를 도와 세계를 지켜간다</p>
+                    </div>
+                </a>
+            </article>
+            <article>
+                <div class="sec4_item_img">
+                    <img src="./static/imgs/ch5.png" alt="">
+                </div>
+                <a href="#" class="sec4_item_vod">
+                    <video loop preload="auto" id="v4" muted>
+                        <source src="./static/vod/vod5.mp4" type="video/mp4">
+                    </video>
+                    <div class="sec4_item_title">
+                        <h3>헐크</h3>
+                        <p>브루스 배너는 천재적인 과학자로 핵물리학, 생화학, 감마선 분야에서 저명한 인재다.
+                            썬더볼트 로스 장군에게 속아 자신의 몸에 감마선 피폭 실험을 진행하였으며
+                            이 사고 이후로 화가 나거나 흥분하면 '헐크'라는 거대하고 폭력적인 초록색 괴인으로 변하는 괴생명체가 되었다.</p>
+                    </div>
+                </a>
+            </article>
+        </div>
+    </section>
+
+    <!-- 섹션5 추천영화 -->
+    <section class="section5_movie">
+        <div class="sec_title">
+            <h1>추천 영화</h1>
+            <span></span>
+        </div>
+        <div class="sec5_black_bg"></div>
+        <div class="sec5_box">
+            <div class="sec5_title">
+                <ul>
+                    <li>
+                        <img src="./static/imgs/movie_img.png" alt="">
+                    </li>
+                    <li>
+                        <h1>추천영화</h1>
+                    </li>
+                    <li>
+                        <h3>닥터스트레인지: 대혼돈의 멀티버스</h3>
+                    </li>
+                    <li>
+                        <p>끝없이 균열되는 차원과 뒤엉킨 시공간의 멀티버스가 열리며 오랜 동료들, 그리고 차원을 넘어 들어온 새로운 존재들을 맞닥뜨리게 된 ‘닥터 스트레인지’. 대혼돈 속, 그는
+                            예상치 못한 극한의 적과 맞서 싸워야만 하는데….</p>
+                    </li>
+                    <li>
+                        <a href="#">GET IT NOW</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sec5_right_bg"></div>
+        </div>
+        <div class="sec5_itemBox">
+            <div class="sec5_item">
+                <a href="#">
+                    <img src="./static/imgs/sec5_img1.png" alt="">
+                    <h3>캡틴 아메리카: 시빌 워</h3>
+                </a>
+            </div>
+            <div class="sec5_item">
+                <a href="#">
+                    <img src="./static/imgs/sec5_img2.png" alt="">
+                    <h3>아이언맨3</h3>
+                </a>
+            </div>
+            <div class="sec5_item">
+                <a href="#">
+                    <img src="./static/imgs/sec5_img3.png" alt="">
+                    <h3>토르: 라그나로크</h3>
+                </a>
+            </div>
+            <div class="sec5_item">
+                <a href="#">
+                    <img src="./static/imgs/sec5_img4.png" alt="">
+                    <h3>앤트맨: 와스프</h3>
+                </a>
+            </div>
+            <div class="sec5_item">
+                <a href="#">
+                    <img src="./static/imgs/sec5_img5.png" alt="">
+                    <h3>스파이더맨: 노웨이홈</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 카피라이터 -->
+    <footer>
+        <div>
+            <div>
+                <p>© 2022 Choi Ji Hwan</p>
+            </div>
+            <div>
+                <a href="https://github.com/waraaa4/marvel" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://waraaa4.github.io/" target="_blank"><i class="fa-solid fa-house"></i></a>
+                <a href="https://economic-vibraphone-b79.notion.site/bbb01759d1554939932d0959400d1a7c" target="_blank"><i class="fa-solid fa-book"></i></a>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="./static/bootstrap/js/bootstrap.js"></script>
+<script src="./static/js/jquery.mCustomScrollbar.js"></script>
+<script>
+    // 윈도우 준비
+    $(document).ready(function () {
+        $(".sec3_board p").stop().css({color: "#6c6c6c"});
+        $(".sec3_board1 p").stop().css({color: "white"});
+        $(".sec3_board>div:nth-child(1)").stop().css({opacity: "0.5"});
+        $(".sec3_board1>div:nth-child(1)").stop().css({opacity: "1"});
+        $(".sec3_item").stop().fadeOut()
+        $(".sec3_item1").stop().fadeIn();
+        $(".sec4_item_vod").stop().fadeOut();
+
+        win_width_event();
+    });
+
+    // 윈도우 리사이즈
+    $(window).resize(function () {
+        win_width_event();
+    });
+
+    function win_width_event() {
+        let win_width = $(window).width()+17;
+        if (win_width <= 650) {
+            $(".firstNav").stop().fadeOut();
+            $(".lastNav").stop().fadeOut();
+            $(".ham").stop().fadeIn();
+            $(".section4_characters").stop().fadeOut();
+            $(".sec5_black_bg").stop().fadeOut();
+            $(".sec5_box").stop().fadeOut();
+            $(".section5_movie .sec_title").stop().fadeIn();
+            // $(".main_img ul li:nth-child(2)").stop().fadeOut();
+        } else if (win_width > 650) {
+            $(".firstNav").stop().fadeIn();
+            $(".lastNav").stop().fadeIn();
+            $(".ham").stop().fadeOut();
+            $(".section4_characters").stop().fadeIn();
+            $(".sec5_black_bg").stop().fadeIn();
+            $(".sec5_box").stop().fadeIn();
+            $(".section5_movie .sec_title").stop().fadeOut();
+
+            $(".ham_close").stop().fadeOut();
+            $(".ham_pop").stop().fadeOut();
+        }
+    }
+
+    // 마우스 휠
+    $(window).on("wheel", function (event) {
+        // ani_img = $("html").is(":animated")  // :animated 움직이는 요소
+        // e.preventDefault() 는 고유 동작을 중단시키고,
+        // e.stopPropagation() 는 상위 엘리먼트들로의 이벤트 전파를 중단시킨다.
+        const ani_img = $("html").is(":animated")
+
+        if (event.originalEvent.deltaY < 0 && !ani_img) {
+            // wheeled up
+            $(".header").stop().css({
+                top: "0px"
+            })
+        } else if (event.originalEvent.deltaY > 0 && !ani_img) {
+            // wheeled down
+            $(".header").stop().css({
+                top: "-90px"
+            })
+        }
+    });
+
+    // 네비게이션 햄 버튼 클릭
+    $(".ham").click(function (){
+        $(".ham_close").stop().fadeIn();
+        $(".ham_pop").stop().fadeIn();
+        $(".ham").stop().fadeOut();
+    });
+    // 네비게이션 햄 클로즈 버튼 클릭
+    $(".ham_close").click(function (){
+        $(".ham_close").stop().fadeOut();
+        $(".ham_pop").stop().fadeOut();
+        $(".ham").stop().fadeIn();
+    });
+
+
+    // 섹션3 유튜브 스크롤
+    (function ($) {
+        $(window).on("load", function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+    // 섹션3 예고편 클릭
+    $(".sec3_board").click(function () {
+        let removeClass = $(".sec3_board").removeClass("fade_in")
+        let addClass = $(this).addClass("fade_in");
+        let myIndex = $(this).index();
+        let sec3_youtube = $(".sec3_items1>div").eq(myIndex);
+        let i = $(this).index();
+        document.getElementById('c' + i).currentTime = 0;
+        document.getElementById('c' + i).pause();
+        let sum = i + 1
+        let num = $(".sec3_item" + sum).find(".sec3_vod")
+        $(".sec3_vod").removeClass("sec3_play")
+        num.addClass("sec3_play")
+
+        $(".sec3_item_black").stop().fadeIn()
+        $(".sec3_item_play").stop().fadeIn()
+        $(".sec3_item").stop().fadeOut()
+        $(sec3_youtube).stop().fadeIn();
+        $(".sec3_board_img").stop().css({opacity: "0.5"});
+        $(".fade_in>div:nth-child(1)").stop().css({opacity: "1"});
+        $(".sec3_board p").stop().css({color: "#6c6c6c"});
+        $(".fade_in p").stop().css({color: "white"});
+    });
+    // 섹션3 플레이버튼 클릭
+    $(".sec3_item_play img").click(function () {
+        $(".sec3_item_black").stop().fadeOut()
+        $(".sec3_item_play").stop().fadeOut()
+        // $(".sec3_play").get(0).currentTime=0;
+        $(".sec3_play").get(0).play();
+    });
+    // 섹션3 비디오 클릭 정지
+    $(".sec3_vod").click(function () {
+        $(".sec3_item_black").stop().fadeIn()
+        $(".sec3_item_play").stop().fadeIn()
+        // $(".sec3_play").get(0).currentTime=0;
+        $(".sec3_play").get(0).pause();
+    });
+
+    // 섹션4 추천 히어로
+    // 마우스 오버시
+    $("article").mouseenter(function () {
+        i = $(this).index();
+        // 동영상의 재생위치를 처음(0)으로 설정
+        document.getElementById('v' + i).currentTime = 0;
+        // 동영상을 재생
+        document.getElementById('v' + i).play();
+
+        $("article").stop().animate({"width": "10%"}, 700);
+        $(this).stop().animate({"width": "60%"}, 700);
+        $(this).find(".sec4_item_img").stop().fadeOut();
+        $(this).find(".sec4_item_vod").stop().fadeIn();
+    });
+    // 마우스 아웃시
+    $("article").mouseleave(function () {
+        // 변수 vid에 video파일 참조
+        i = $(this).index();
+        // 동영상을 정지
+        document.getElementById('v' + i).pause();
+
+        $("article").stop().animate({"width": "20%"}, 700);
+        $(this).find(".sec4_item_img").stop().fadeIn();
+        $(this).find(".sec4_item_vod").stop().fadeOut();
+    });
+
+    //섹션5 추천 영화
+    // 마우스 오버시
+    $(".sec5_item a").mouseenter(function () {
+        win_width = $(window).width();
+        if (win_width > 650) {
+            $(this).find("img").stop().animate({"top": "-10px"}, 50);
+        }
+    });
+    // 마우스 아웃시
+    $(".sec5_item a").mouseleave(function () {
+        win_width = $(window).width();
+        if (win_width > 650) {
+            $(this).find("img").stop().animate({"top": "0px"}, 50);
+        }
+    });
+
+
+    /*스크롤*/
+    // $(window).scroll(function(){
+    //     win_top = $(window).scrollTop()
+    //
+    //     console.log(win_top)
+    //     if(win_top > 1) {
+    //         $(".header").stop().fadeOut()
+    //     }
+    //     if(win_top < 80) {
+    //         $(".header").stop().fadeIn()
+    //         console.log("asd")
+    //     }
+    //
+    //     if(win_top >= 1){
+    //         $("header").css({
+    //             background:"white"
+    //         })
+    //     }else{
+    //         $("header").css({
+    //             background:"rgba(255, 255, 255, 0.1)"
+    //         })
+    //     }
+    // })
+
+    // window.addEventListener('scroll', () => {
+    //     let scroll_top = document.documentElement.scrollTop; // 현재 스크롤바 위치
+    //     let windowHeight = window.innerHeight; // 스크린 창
+    //     let fullHeight = document.body.scrollHeight; //  margin 값은 포함 x
+    //
+    //     if(scrollLocation + windowHeight >= fullHeight){
+    //         console.log('끝')
+    //     }
+    // })
+
+    // window.addEventListener("scroll", (event) => {
+    //     let scrollY = this.scrollY;
+    //     let scrollX = this.scrollX;
+    //     console.log(scrollY);
+    //     console.log(scrollX);
+    // });
+</script>
+</html>

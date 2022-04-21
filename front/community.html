@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/community.css">
+    <link rel="stylesheet" href="./static/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="./static/bootstrap/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8ca221a456.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- 네비게이션 -->
+<header class="header">
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="./static/imgs/logo.png" alt="">
+            </a>
+        </div>
+        <div class="firstNav">
+            <ul>
+                <li>
+                    <a href="character.html">characters</a>
+                </li>
+                <li>
+                    <a href="movie.html">movies</a>
+                </li>
+                <li>
+                    <a href="community.html">community</a>
+                </li>
+            </ul>
+        </div>
+        <div class="lastNav">
+            <ul>
+                <li th:if="${session.loginId} == null">
+                    <a href="member/save.html">sign in</a>
+                </li>
+                <li>
+                    <span>|</span>
+                </li>
+                <li th:if="${session.loginId} == null">
+                    <a href="member/login.html">join</a>
+                </li>
+                <!-- <li th:if="${session.loginId} != null">
+                    <a href="/member/logout">로그아웃</a>
+                </li> -->
+                <!--                    <li>-->
+                <!--                        <a href="#">-->
+                <!--                            <i class="fa-solid fa-magnifying-glass"></i>-->
+                <!--                        </a>-->
+                <!--                    </li>-->
+            </ul>
+        </div>
+        <div class="ham">
+            <i class="fa-solid fa-align-justify fa-2x"></i>
+        </div>
+        <div class="ham_close">
+            <i class="fa-solid fa-xmark fa-3x"></i>
+        </div>
+    </nav>
+    <div class="ham_pop">
+        <ul>
+            <li><a href="#">characters</a></li>
+            <li><a href="#">movies</a></li>
+            <li><a href="#">community</a></li>
+            <li><a href="#">sign in</a></li>
+            <li><a href="#">join</a></li>
+            <li><input type="text" class="form-control mb-2" placeholder="Search"></li>
+        </ul>
+    </div>
+</header>
+
+<!-- 섹션1 메인 이미지 -->
+<section class="section1_main">
+    <div class="sec1_img"></div>
+    <div class="sec1_title">
+        <h1>COMMUNITY</h1>
+        <p>자유로운 커뮤니티 공간 입니다.</p>
+    </div>
+</section>
+
+<!-- 섹션2 게시판-->
+<section class="section2_board">
+    <div class="sec2_select">
+        <form action="/board/search" method="get">
+            <select name="choice" id="choice">
+                <option value="writer">작성자</option>
+                <option value="title">제목</option>
+            </select>
+            <input type="text" name="keyword" placeholder=" 검색어 입력..">
+            <!--            <input type="submit" th:value="검색">-->
+            <input type="submit" value="검색">
+        </form>
+        <div class="sec2_btn_item">
+            <a href="board/save.html">글작성</a>
+            <a href="member/mypage.html">마이페이지</a>
+        </div>
+    </div>
+    <div class="sec2_box">
+        <table class="sec2_table">
+            <thead>
+            <tr>
+                <th scope="">글 번호</th>
+                <th scope="">글쓴이</th>
+                <th scope="">글 제목</th>
+                <th scope="">조회수</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--            <tr th:each="board: ${boardList}">-->
+            <!--                <td th:text="${board.boardId}"></td>-->
+            <!--                <td th:text="${board.boardWriter}"></td>-->
+            <!--                <td><a th:href="@{|/board/${board.boardId}|}" th:text="${board.boardTitle}">제목</a></td>-->
+            <!--                <td th:text="${board.boardHits}"></td>-->
+            <!--            </tr>-->
+            <tr>
+                <td>1</td>
+                <td>캡틴아메리카</td>
+                <td><a href="#">캡틴 아메리카 시빌 워</a></td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>아이언맨</td>
+                <td><a href="#">아이언맨3 아이언맨2</a></td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>토르</td>
+                <td><a href="#">토르 라그나로크</a></td>
+                <td>0</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="sec2_board_btn">
+        <ul class="">
+            <li class="">
+                <a class="" th:href="@{/board/(page=1)}">
+                    <span>First</span>
+                </a>
+            </li>
+            <li th:class="${boardList.first} ? 'disabled'" class="">
+                <a class="" th:href="${boardList.first} ? '#' : @{/board/(page=${boardList.number})}">
+                    <span>&lt;</span>
+                </a>
+            </li>
+            <li th:each="page: ${#numbers.sequence(startPage, endPage)}"
+                th:class="${page == boardList.number + 1} ? 'page-item active'">
+                <a class="" th:text="${page}" th:href="@{/board/(page=${page})}">1</a>
+            </li>
+            <li th:class="${boardList.last} ? 'disabled'">
+                <a class="" th:href="${boardList.last} ? '#' : @{/board/(page=${boardList.number + 2})}">
+                    <span>&gt;</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="" th:href="@{/board/(page=${boardList.totalPages})}">
+                    <span>Last</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- 카피라이터 -->
+<footer>
+    <div>
+        <div>
+            <p>© 2022 Choi Ji Hwan</p>
+        </div>
+        <div>
+            <a href="https://github.com/waraaa4/marvel" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://waraaa4.github.io/" target="_blank"><i class="fa-solid fa-house"></i></a>
+            <a href="https://economic-vibraphone-b79.notion.site/bbb01759d1554939932d0959400d1a7c"
+               target="_blank"><i class="fa-solid fa-book"></i></a>
+        </div>
+    </div>
+</footer>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="./static/bootstrap/js/bootstrap.js"></script>
+<script src="./static/js/jquery.mCustomScrollbar.js"></script>
+<script>
+
+    let num = 0;
+
+    // 윈도우 준비
+    $(document).ready(function () {
+
+
+        win_width_event();
+    });
+
+    // 윈도우 리사이즈
+    $(window).resize(function () {
+        win_width_event();
+    });
+
+    // 마우스 휠
+    $(window).on("wheel", function (event) {
+        // ani_img = $("html").is(":animated")  // :animated 움직이는 요소
+        // e.preventDefault() 는 고유 동작을 중단시키고,
+        // e.stopPropagation() 는 상위 엘리먼트들로의 이벤트 전파를 중단시킨다.
+        const ani_img = $("html").is(":animated")
+
+        if (event.originalEvent.deltaY < 0 && !ani_img) {
+            // wheeled up
+            $(".header").stop().css({
+                top: "0px"
+            })
+        } else if (event.originalEvent.deltaY > 0 && !ani_img) {
+            // wheeled down
+            $(".header").stop().css({
+                top: "-90px"
+            })
+        }
+    });
+
+    // 네비게이션 공통
+    function win_width_event() {
+        let win_width = $(window).width() + 17;
+        if (win_width <= 650) {
+            $(".firstNav").stop().fadeOut();
+            $(".lastNav").stop().fadeOut();
+            $(".ham").stop().fadeIn();
+
+        } else if (win_width > 650) {
+            $(".firstNav").stop().fadeIn();
+            $(".lastNav").stop().fadeIn();
+            $(".ham").stop().fadeOut();
+
+            $(".ham_close").stop().fadeOut();
+            $(".ham_pop").stop().fadeOut();
+        }
+    }
+
+    // 네비게이션 햄 버튼 클릭
+    $(".ham").click(function () {
+        $(".ham_close").stop().fadeIn();
+        $(".ham_pop").stop().fadeIn();
+        $(".ham").stop().fadeOut();
+    });
+    // 네비게이션 햄 클로즈 버튼 클릭
+    $(".ham_close").click(function () {
+        $(".ham_close").stop().fadeOut();
+        $(".ham_pop").stop().fadeOut();
+        $(".ham").stop().fadeIn();
+    });
+
+
+</script>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/movie.css">
+    <link rel="stylesheet" href="./static/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="./static/bootstrap/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8ca221a456.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrap">
+    <!-- 네비게이션 -->
+    <header class="header">
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./static/imgs/logo.png" alt="">
+                </a>
+            </div>
+            <div class="firstNav">
+                <ul>
+                    <li>
+                        <a href="character.html">characters</a>
+                    </li>
+                    <li>
+                        <a href="movie.html">movies</a>
+                    </li>
+                    <li>
+                        <a href="community.html">community</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="lastNav">
+                <ul>
+                    <li th:if="${session.loginId} == null">
+                        <a href="member/save.html">sign in</a>
+                    </li>
+                    <li>
+                        <span>|</span>
+                    </li>
+                    <li th:if="${session.loginId} == null">
+                        <a href="member/login.html">join</a>
+                    </li>
+                    <!-- <li th:if="${session.loginId} != null">
+                        <a href="/member/logout">로그아웃</a>
+                    </li> -->
+                    <!--                    <li>-->
+                    <!--                        <a href="#">-->
+                    <!--                            <i class="fa-solid fa-magnifying-glass"></i>-->
+                    <!--                        </a>-->
+                    <!--                    </li>-->
+                </ul>
+            </div>
+            <div class="ham">
+                <i class="fa-solid fa-align-justify fa-2x"></i>
+            </div>
+            <div class="ham_close">
+                <i class="fa-solid fa-xmark fa-3x"></i>
+            </div>
+        </nav>
+        <div class="ham_pop">
+            <ul>
+                <li><a href="#">characters</a></li>
+                <li><a href="#">movies</a></li>
+                <li><a href="#">community</a></li>
+                <li><a href="#">sign in</a></li>
+                <li><a href="#">join</a></li>
+                <li><input type="text" class="form-control mb-2" placeholder="Search"></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 섹션1 메인 이미지 -->
+    <section class="section1_main">
+        <div class="sec1_img"></div>
+        <div class="sec1_title">
+            <h1>MARVEL MOVIES</h1>
+            <p>강렬한 마블 시네마틱 유니버스의 세계를 경험해 보세요.</p>
+        </div>
+    </section>
+
+    <!-- 섹션2 최신 영화 -->
+    <section class="section2_movie">
+        <div class="sec_title">
+            <h1>최신 영화</h1>
+            <span></span>
+        </div>
+        <div class="sec2_box">
+            <div class="sec2_item">
+                <div class="sec2_item_img"></div>
+                <h3>토르: 러브 앤 썬더</h3>
+                <p>2022</p>
+            </div>
+            <div class="sec2_item">
+                <div class="sec2_item_img"></div>
+                <h3>닥터 스트레인지: 대혼돈의 멀티버스</h3>
+                <p>2022</p>
+            </div>
+            <div class="sec2_item">
+                <div class="sec2_item_img"></div>
+                <h3>스파이더맨: 노 웨이 홈</h3>
+                <p>2021</p>
+            </div>
+            <div class="sec2_item">
+                <div class="sec2_item_img"></div>
+                <h3>이터널스</h3>
+                <p>2021</p>
+            </div>
+            <div class="sec2_item">
+                <div class="sec2_item_img"></div>
+                <h3>샹치와 텐 링즈의 전설</h3>
+                <p>2021</p>
+            </div>
+            <div class="sec2_item">
+                <div class="sec2_item_img"></div>
+                <h3>블랙 위도우</h3>
+                <p>2021</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 섹션3 트레일러 -->
+    <section class="section3_trailer">
+        <div class="sec3_bg_title"></div>
+        <div class="sec3_title">
+            <h1>영화 소식</h1>
+            <ul>
+                <li>스파이더맨</li>
+                <li>닥터 스트레인지</li>
+                <li>토르</li>
+            </ul>
+        </div>
+        <div class="sec3_bg_img">
+            <div></div>
+        </div>
+        <div class="sec3_movie_box sec3_movie_box1">
+            <div class="sec3_movie_item sec3_movie_item1">
+                <div class="sec3_movie_item1_1" title="톰 홀랜드와 젠데이아의 인터뷰">
+                    <img src="./static/imgs/sec3_sp0.png" alt="">
+                </div>
+            </div>
+            <div class="sec3_movie_item sec3_movie_item2">
+                <div class="sec3_movie_item2_1" title="스파이더맨 굿즈 판매">
+                    <img src="./static/imgs/sec3_sp1.png" alt="">
+                </div>
+                <div class="sec3_movie_item2_2" title="인터뷰 도중 비밀폭로">
+                    <img src="./static/imgs/sec3_sp2.png" alt="">
+                </div>
+            </div>
+            <div class="sec3_movie_item sec3_movie_item3">
+                <div class="sec3_movie_item3_1" title="공식 예고편">
+                    <img src="./static/imgs/sec3_sp3.png" alt="">
+                </div>
+                <div class="sec3_movie_item3_2" title="스파이더맨 시사회에 참석한 톰 홀랜드">
+                    <img src="./static/imgs/sec3_sp4.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="sec3_movie_box sec3_movie_box2">
+            <div class="sec3_movie_item sec3_movie_item1">
+                <div class="sec3_movie_item1_1" title="닥터 스트레인지 공식 포스터">
+                    <img src="./static/imgs/sec3_dr0.png" alt="">
+                </div>
+            </div>
+            <div class="sec3_movie_item sec3_movie_item2">
+                <div class="sec3_movie_item2_1" title="공식 예고편">
+                    <img src="./static/imgs/sec3_dr1.png" alt="">
+                </div>
+                <div class="sec3_movie_item2_2" title="닥터 스트레인지 굿즈 판매">
+                    <img src="./static/imgs/sec3_dr2.png" alt="">
+                </div>
+            </div>
+            <div class="sec3_movie_item sec3_movie_item3">
+                <div class="sec3_movie_item3_1" title="제 3의 눈을 사용하는 포스터">
+                    <img src="./static/imgs/sec3_dr3.png" alt="">
+                </div>
+                <div class="sec3_movie_item3_2" title="팬아트 콘서트 발표">
+                    <img src="./static/imgs/sec3_dr4.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="sec3_movie_box sec3_movie_box3">
+            <div class="sec3_movie_item sec3_movie_item1">
+                <div class="sec3_movie_item1_1" title="공식 예고편">
+                    <img src="./static/imgs/sec3_tr0.png" alt="">
+                </div>
+            </div>
+            <div class="sec3_movie_item sec3_movie_item2">
+                <div class="sec3_movie_item2_1" title="로키 인터뷰">
+                    <img src="./static/imgs/sec3_tr1.png" alt="">
+                </div>
+                <div class="sec3_movie_item2_2" title="감독 인터뷰">
+                    <img src="./static/imgs/sec3_tr2.png" alt="">
+                </div>
+            </div>
+            <div class="sec3_movie_item sec3_movie_item3">
+                <div class="sec3_movie_item3_1" title="서로 농담을 주고받는 포토">
+                    <img src="./static/imgs/sec3_tr3.png" alt="">
+                </div>
+                <div class="sec3_movie_item3_2" title="cg 적용전 촬영 모습">
+                    <img src="./static/imgs/sec3_tr4.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 섹션4 캐릭터 검색 -->
+    <section class="section4_search">
+        <div class="sec_title">
+            <h1>영화 검색</h1>
+            <span></span>
+        </div>
+        <div class="sec4_box">
+            <div class="sec4_title">
+                <h1>영웅별 검색</h1>
+                <ul>
+                    <li class="captain">캡틴 아메리카</li>
+                    <li class="iron">아이언맨</li>
+                    <li class="thor">토르</li>
+                    <li class="spider">스파이더맨</li>
+                    <li class="doctor">닥터 스트레인지</li>
+                    <li class="ant">앤트맨</li>
+                </ul>
+            </div>
+            <div class="sec4_img_box">
+                <div id="input_form">
+                    <input type="search" id="keyword" placeholder=" 캐릭터 이름으로 검색...">
+                    <i id="keyword2" class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="sec4_img_item iron captain thor spider doctor ant">
+                    <div class="sec4_img_bg"></div>
+                    <p class="sec4_img_name">어벤져스: 엔드게임</p>
+                </div>
+                <div class="sec4_img_item iron captain thor spider doctor">
+                    <div class="sec4_img_bg"></div>
+                    <p class="sec4_img_name">어벤져스: 인피니티 워</p>
+                </div>
+                <div class="sec4_img_item spider">
+                    <div class="sec4_img_bg"></div>
+                    <p class="sec4_img_name">스파이더맨: 노웨이 홈</p>
+                </div>
+                <div class="sec4_img_item doctor">
+                    <div class="sec4_img_bg"></div>
+                    <p class="sec4_img_name">닥터 스트레인지</p>
+                </div>
+                <div class="sec4_img_item ant">
+                    <div class="sec4_img_bg"></div>
+                    <p class="sec4_img_name">앤드맨 & 와스프</p>
+                </div>
+                <div class="sec4_img_item captain iron spider ant">
+                    <div class="sec4_img_bg"></div>
+                    <p class="sec4_img_name">캡틴 아메리카: 시빌 워</p>
+                </div>
+                <div class="sec4_img_item iron">
+                    <div class="sec4_img_bg"></div>
+                    <p class="sec4_img_name">아이언맨 3</p>
+                </div>
+                <div class="sec4_img_item thor">
+                    <div class="sec4_img_bg"></div>
+                    <p class="sec4_img_name">토르: 다크 월드</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 카피라이터 -->
+    <footer>
+        <div>
+            <div>
+                <p>© 2022 Choi Ji Hwan</p>
+            </div>
+            <div>
+                <a href="https://github.com/waraaa4/marvel" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://waraaa4.github.io/" target="_blank"><i class="fa-solid fa-house"></i></a>
+                <a href="https://economic-vibraphone-b79.notion.site/bbb01759d1554939932d0959400d1a7c"
+                   target="_blank"><i class="fa-solid fa-book"></i></a>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="./static/bootstrap/js/bootstrap.js"></script>
+<script src="./static/js/jquery.mCustomScrollbar.js"></script>
+<script>
+
+    let num = 0;
+
+    // 윈도우 준비
+    $(document).ready(function () {
+
+        for (let b = 0; b <= 6; b++) {
+            $(".sec2_item").eq(b).find(".sec2_item_img").stop().css({
+                "background": "url(./static/imgs/movie_mo" + b + ".png",
+                'background-repeat': 'no-repeat',
+                'background-position': 'center',
+                'background-size': 'cover'
+            });
+        }
+
+        $(".sec3_movie_box").stop().hide()
+        $(".sec3_movie_box").eq(0).stop().slideDown(500)
+
+        // 섹션4 이미지 배치
+        for (let b = 0; b <= 7; b++) {
+            $(".sec4_img_item").eq(b).find(".sec4_img_bg").stop().css({
+                "background": "url(./static/imgs/sec4_movie" + b + ".png",
+                'background-repeat': 'no-repeat',
+                'background-position': 'center',
+                'background-size': 'cover'
+            });
+        }
+
+        win_width_event();
+    });
+
+    // 윈도우 리사이즈
+    $(window).resize(function () {
+        win_width_event();
+    });
+
+    // 마우스 휠
+    $(window).on("wheel", function (event) {
+        // ani_img = $("html").is(":animated")  // :animated 움직이는 요소
+        // e.preventDefault() 는 고유 동작을 중단시키고,
+        // e.stopPropagation() 는 상위 엘리먼트들로의 이벤트 전파를 중단시킨다.
+        const ani_img = $("html").is(":animated")
+
+        if (event.originalEvent.deltaY < 0 && !ani_img) {
+            // wheeled up
+            $(".header").stop().css({
+                top: "0px"
+            })
+        } else if (event.originalEvent.deltaY > 0 && !ani_img) {
+            // wheeled down
+            $(".header").stop().css({
+                top: "-90px"
+            })
+        }
+    });
+
+    // 네비게이션 공통
+    function win_width_event() {
+        let win_width = $(window).width() + 17;
+        if (win_width <= 650) {
+            $(".firstNav").stop().fadeOut();
+            $(".lastNav").stop().fadeOut();
+            $(".ham").stop().fadeIn();
+
+        } else if (win_width > 650) {
+            $(".firstNav").stop().fadeIn();
+            $(".lastNav").stop().fadeIn();
+            $(".ham").stop().fadeOut();
+
+            $(".ham_close").stop().fadeOut();
+            $(".ham_pop").stop().fadeOut();
+        }
+    }
+
+    // 네비게이션 햄 버튼 클릭
+    $(".ham").click(function () {
+        $(".ham_close").stop().fadeIn();
+        $(".ham_pop").stop().fadeIn();
+        $(".ham").stop().fadeOut();
+    });
+    // 네비게이션 햄 클로즈 버튼 클릭
+    $(".ham_close").click(function () {
+        $(".ham_close").stop().fadeOut();
+        $(".ham_pop").stop().fadeOut();
+        $(".ham").stop().fadeIn();
+    });
+
+    // 섹션3 버튼 클릭
+    $(".sec3_title li").click(function () {
+        num = $(".sec3_title li").index(this)
+        $(".sec3_title li").css({color: "#ffffff"});
+        $(this).stop().css({color: "#ea2328"});
+        console.log($(".sec3_movie_box").eq(num))
+
+        $(".sec3_bg_img div").stop().css({
+            "background": "url(./static/imgs/sec3_mo_" + num + ".png",
+            'background-repeat': 'no-repeat',
+            'background-position': 'center',
+            'background-size': 'cover'
+        });
+
+        $(".sec3_movie_box").stop().hide()
+        $(".sec3_movie_box").eq(num).stop().slideDown(500)
+
+        if(num == 0) {
+            $(".sec3_bg_title").stop().css({backgroundColor:"blue"});
+        } else if(num == 1) {
+            $(".sec3_bg_title").stop().css({backgroundColor:"red"});
+        } else {
+            $(".sec3_bg_title").stop().css({backgroundColor:"#797979"});
+        }
+
+
+    });
+
+    // 섹션4 엔터키 누르거나 돋보기 눌러서 검색
+    $("#keyword").keyup(function (e) {
+        let name = $(this).val();
+        let temp = $(".sec4_img_name:contains('" + name + "')");
+
+        if (e.keyCode == 13) {
+            $(".sec4_img_item").hide();
+            $(temp).parent().show();
+            console.log(temp)
+        }
+
+        $("#keyword2").click(function (){
+            $(".sec4_img_item").hide();
+            $(temp).parent().show();
+        });
+
+    });
+
+    // 섹션4 영화별 검색
+    $(".sec4_title li").click(function (){
+        let class_name = $(this).attr("class");
+        console.log(class_name)
+        $(".sec4_img_item").stop().hide();
+        $(".sec4_img_box ."+class_name).stop().show();
+    });
+
+
+</script>
+</html>
