@@ -375,7 +375,7 @@ header ul li span {
 .sec2_item img {
     width: 100%;
     transition: 0.5s;
-    box-shadow: 1px 1px 10px black;
+    box-shadow: 1px 1px 4px black;
 }
 
 .sec2_item a:hover img {
