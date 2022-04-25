@@ -773,6 +773,7 @@ header {
     width: 340px;
     height: 240px;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 .sec2_Wbox ul {
